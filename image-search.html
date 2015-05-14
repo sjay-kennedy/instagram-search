@@ -15,14 +15,22 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <form class="form-inline" novalidate  name="form" ng-submit='getImages(tag, null)' >
+            <label>Search recent images on Instagram</label>
             <div class="form-group">
-                <input type="text" class="form-control" id="tag" ng-model="tag" placeholder="Enter a tag to search">
+                <input type="text" class="form-control" id="tag" ng-model="tag" placeholder="Enter a tag to search" required >
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" class="btn btn-default" ng-disabled="form.$invalid" >Search</button>
         </form>
     </div>
 </nav>
-<div class="results" >
+<div class="results text-center" ng-if="loaded=='loading'">
+    <img src="loading-animation-square.gif" />
+</div>
+<div ng-if="loaded==false" class="alert alert-warning alert-dismissible results" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Error</strong> {{errorMessage}}
+</div>
+<div class="results" ng-show="loaded==true">
     <section class="container">
         <div class="col-md-4 image-container" ng-repeat="image in images">
             <div class="images">
@@ -31,10 +39,10 @@
         </div>
     </section>
     <section class="container">
-        <nav ng-if="loaded==true">
+        <nav ng-show="loaded==true">
             <ul class="pager">
-                <li><a href="#">Previous</a></li>
-                <li><a href="" ng-click="getImages(null, next)">Next</a></li>
+               <!-- <li><a href="#">Previous</a></li>-->
+                <li><a href ng-click="getImages(null, next)">More</a></li>
             </ul>
         </nav>
     </section>

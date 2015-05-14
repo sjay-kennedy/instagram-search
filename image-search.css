@@ -1,15 +1,24 @@
 /*CSS for Instagram Images*/
-.navbar-default {
 
-    max-height:120px;
-    height:70px;
+.navbar-default {
+    min-height:70px;
     background:#444;
 }
+.form-group {
+    display:inline-block;
+}
 .form-inline {
-    width:280px;
+    max-width:99%;
     margin-top:15px;
     margin-left:auto;
     margin-right:auto;
+}
+label {
+    color:#eee;
+    font-weight:lighter;
+    font-size:18px;
+    font-family: sans-serif;
+    padding-right:15px;
 }
 .results {
     margin-top:100px;
@@ -20,4 +29,23 @@
 .images {
     padding:10px;
     border:1px solid #ccc;
+    background:#444;
+}
+.images img {
+    width:100%;
+}
+.alert-warning {
+    width:50%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+@media (min-width: 992px) {
+    .form-inline {
+        max-width:65%;
+        margin-top:15px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
 }
